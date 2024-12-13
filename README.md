@@ -1,5 +1,5 @@
 # Hey AI CLI
-
+[![build](https://github.com/rafaelherik/hey-ai-cli/actions/workflows/hey-ai-ci.yaml/badge.svg)](https://github.com/rafaelherik/hey-ai-cli/actions/workflows/hey-ai-ci.yaml)
 A command-line interface for interacting with various AI assistants.
 
 ## Installation
