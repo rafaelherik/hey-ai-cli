@@ -63,6 +63,35 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -e ".[dev]"
 ```
 
+### Reporting Issues
+
+#### Bug Reports
+If you encounter a bug, please report it using our [Bug Report](https://github.com/rafaelherik/hey-ai-cli/issues/new?template=bug_report.yml) template. Be sure to include:
+- The version of Hey AI CLI you're using
+- Your operating system
+- Steps to reproduce the issue
+- Expected vs actual behavior
+- Any relevant logs or error messages
+
+#### Feature Requests
+Have an idea for a new feature? Submit it using our [Feature Request](https://github.com/rafaelherik/hey-ai-cli/issues/new?template=feature_request.yml) template. Please include:
+- A clear description of the problem you're trying to solve
+- Your proposed solution
+- Any alternative solutions you've considered
+
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
+
+Requirements for contributions:
+- All new code must include unit tests
+- Commits must be signed
+- Pull requests must have clear descriptions
+- Follow the code style guidelines
+
+For more information, check out our [Contributing Guidelines](CONTRIBUTING.md).
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
