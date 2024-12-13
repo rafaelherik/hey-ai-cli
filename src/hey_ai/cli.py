@@ -23,19 +23,39 @@ def save_config(config):
         yaml.dump(config, f)
 
 @click.group(invoke_without_command=True)
+@click.option('--config', type=click.Path(exists=True), help='Path to configuration file')
 @click.argument('assistant', required=False)
 @click.argument('question', nargs=-1, required=False)
 @click.pass_context
-def main(ctx, assistant, question):
+def main(ctx, config, assistant, question):
     """AI assistant CLI tool"""
-    if ctx.invoked_subcommand is None:
-        if not assistant or not question:
+    if config:
+        try:
+            if config.endswith('.json'):
+                with open(config) as f:
+                    new_config = json.load(f)
+            else:
+                with open(config) as f:
+                    new_config = yaml.safe_load(f)
+
+            existing_config = load_config()
+            existing_config['assistants'] = {**existing_config.get('assistants', {}), **new_config.get('assistants', {})}
+            save_config(existing_config)
+            click.echo("Configuration updated successfully!")
+            return
+        except Exception as e:
+            click.echo(f"Error loading configuration: {str(e)}")
+            return
+
+    # Only execute main logic if no subcommand AND assistant is provided
+    if ctx.invoked_subcommand is None and assistant:
+        if not question:
             click.echo(ctx.get_help())
             return
 
         config = load_config()
         if assistant not in config.get('assistants', {}):
-            click.echo(f"Assistant '{assistant}' not configured. Use 'hey configure' first.")
+            click.echo(f"Assistant '{assistant}' not configured. Use --config option first.")
             return
 
         assistant_config = config['assistants'][assistant]
@@ -50,24 +70,5 @@ def main(ctx, assistant, question):
             click.echo(f"\n{assistant}: {response}\n")
         except Exception as e:
             click.echo(f"Error: {str(e)}")
-
-@main.command()
-@click.option('--config', type=click.Path(exists=True), help='Path to configuration file')
-def configure(config):
-    """Configure AI assistants from a JSON/YAML file"""
-    try:
-        if config.endswith('.json'):
-            with open(config) as f:
-                new_config = json.load(f)
-        else:
-            with open(config) as f:
-                new_config = yaml.safe_load(f)
-
-        existing_config = load_config()
-        existing_config['assistants'] = {**existing_config.get('assistants', {}), **new_config.get('assistants', {})}
-        save_config(existing_config)
-        click.echo("Configuration updated successfully!")
-    except Exception as e:
-        click.echo(f"Error loading configuration: {str(e)}")
 
 

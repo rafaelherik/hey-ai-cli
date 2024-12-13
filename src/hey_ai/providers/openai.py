@@ -10,14 +10,15 @@ class ChatGPTProvider(BaseProvider):
         
         data = {
             "messages": [{"role": "user", "content": question}],
-            "model": self.config.get('model', 'gpt-4-turbo-preview'),
+            "model": self.config.get('model', 'gpt-4-0125-preview'),
             "max_tokens": self.config.get('max_tokens', 1024)
         }
         
         response = requests.post(
             self.config.get('api_url', 'https://api.openai.com/v1/chat/completions'),
             headers=headers,
-            json=data
+            json=data,
+            verify=False
         )
         response.raise_for_status()
         return response.json()['choices'][0]['message']['content']
