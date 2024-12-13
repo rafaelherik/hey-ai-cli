@@ -16,12 +16,12 @@ pip install hey-ai-cli
 # Create a config.yaml file:
 assistants:
   gpt4:
-    provider: chatgpt
+    provider: openai
     api_key: your_openai_api_key
     model: gpt-4-turbo-preview
   
   gpt35:
-    provider: chatgpt
+    provider: openai
     api_key: your_openai_api_key
     model: gpt-3.5-turbo
 
