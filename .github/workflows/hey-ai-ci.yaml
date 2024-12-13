@@ -32,4 +32,4 @@ jobs:
     
     - name: Verify package installation
       run: |
-        python -c "import hey_ai; print(hey_ai.__file__)"
+        hey --help s

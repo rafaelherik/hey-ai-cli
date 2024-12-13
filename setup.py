@@ -42,6 +42,6 @@ setup(
     },
     include_package_data=True,
     package_data={
-        "hey_eai": ["config/*.yaml"],
+        "hey_ai": ["config/*.yaml"],
     },
 )
