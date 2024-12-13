@@ -67,8 +67,8 @@ def main(ctx, config, assistant, question):
         try:
             ai_assistant = provider_class(assistant_config)
             response = ai_assistant.get_response(' '.join(question))
-            click.echo(f"\n{assistant}: {response}\n")
+            click.echo(f"\n{click.style(assistant + ':', fg='blue', bold=True)} {click.style(response, fg='green')}\n")
         except Exception as e:
-            click.echo(f"Error: {str(e)}")
+            click.echo(click.style(f"Error: {str(e)}", fg='red', bold=True))
 
 

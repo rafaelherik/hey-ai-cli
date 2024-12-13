@@ -23,9 +23,10 @@ install-dev:
 
 uninstall:
 	$(PIP) uninstall -y ./dist/$(PROJECT_NAME)
-
+configure:
+	hey --config "./local.config.yaml" 
 test:
-	hey --config "./config.yaml" 
+	hey --config "./local.config.yaml" 
 	hey gpt4 "How old is Barack Obama" 
 
 clean:

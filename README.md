@@ -15,30 +15,33 @@ pip install hey-ai-cli
 ```bash
 # Create a config.yaml file:
 assistants:
-  claude:
-    provider: claude
-    api_key: your_anthropic_api_key
-    model: claude-3-opus-20240229
-  
   gpt4:
     provider: chatgpt
     api_key: your_openai_api_key
     model: gpt-4-turbo-preview
+  
+  gpt35:
+    provider: chatgpt
+    api_key: your_openai_api_key
+    model: gpt-3.5-turbo
 
 # Configure the CLI:
 hey --config=config.yaml
 ```
 
+> **Important Note:** Currently, only OpenAI models (ChatGPT) are supported. Support for Claude, Gemini, and Deepseek is coming soon.
+
 2. Use the CLI:
 
 ```bash
-hey claude "What is the capital of France?"
-hey gpt4 "Explain quantum computing"
+hey gpt4 "What is the capital of France?"
+hey gpt35 "Explain quantum computing"
 ```
 
 ## Features
 
-- Supports multiple AI providers (Claude, ChatGPT, Gemini, Deepseek)
+- Supports OpenAI's GPT models (ChatGPT)
+- Support planned for multiple AI providers (Claude, Gemini, Deepseek)
 - Easy configuration management
 - Simple command-line interface
 - Extensible provider system
@@ -49,7 +52,7 @@ To set up the development environment:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/hey-ai-cli
+git clone https://github.com/rafaelherik/hey-ai-cli
 cd hey-ai-cli
 
 # Create and activate virtual environment
