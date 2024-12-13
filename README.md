@@ -4,9 +4,7 @@ A command-line interface for interacting with various AI assistants.
 
 ## Installation
 
-```bash
-pip install hey-ai-cli
-```
+> Not yet published the package, you must donwload and install from the source code.
 
 ## Usage
 
