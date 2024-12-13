@@ -71,4 +71,3 @@ def main(ctx, config, assistant, question):
         except Exception as e:
             click.echo(click.style(f"Error: {str(e)}", fg='red', bold=True))
 
-asdadsf
